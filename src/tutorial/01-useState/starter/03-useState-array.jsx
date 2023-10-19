@@ -12,11 +12,12 @@ const useStateArray = () => {
   return (
     <div>
       {people.map((person) => (
-        <div key={person.id}>
+        <div key={person.id} >
           <h3>{person.name}</h3>
           <button
             type="button"
             className="btn"
+            style={{backgroundColor:"#c60e7a",cursor:"pointer"}}
             onClick={() => removeItem(person.id)}
           >
             X
@@ -25,6 +26,10 @@ const useStateArray = () => {
       ))}
       <button type="button" className="btn" onClick={() => setPeople([])}>
         Clear all
+      </button>
+      <br />
+      <button type="button" className="btn" onClick={() => setPeople(data)}>
+        Reset
       </button>
     </div>
   );
