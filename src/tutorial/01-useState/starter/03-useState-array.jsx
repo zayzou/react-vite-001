@@ -1,36 +1,33 @@
-import { data } from "../../../data";
 import { useState } from "react";
+import { data } from "../../../data";
 
-const UseStateArray = () => {
+const useStateArray = () => {
   const [people, setPeople] = useState(data);
 
-  const removeElement = (element) => {
-    const id = element.target.id;
-    console.log("you are going to delete " + id);
+  const removeItem = (id) => {
     setPeople(people.filter((person) => person.id != id));
+    console.log(id);
   };
-
-  // const clearAll = () => {
-  //   setPeople([]);
-  // };
 
   return (
     <div>
-      {people.map((person) => {
-        return (
-          <div key={person.id}>
-            <h4>{person.name}</h4>
-            <button id={person.id} type="button" onClick={removeElement}>
-              delete
-            </button>
-          </div>
-        );
-      })}
-      <button className="btn" type="button" onClick={() => setPeople([])}>
+      {people.map((person) => (
+        <div key={person.id}>
+          <h3>{person.name}</h3>
+          <button
+            type="button"
+            className="btn"
+            onClick={() => removeItem(person.id)}
+          >
+            X
+          </button>
+        </div>
+      ))}
+      <button type="button" className="btn" onClick={() => setPeople([])}>
         Clear all
       </button>
     </div>
   );
 };
 
-export default UseStateArray;
+export default useStateArray;
