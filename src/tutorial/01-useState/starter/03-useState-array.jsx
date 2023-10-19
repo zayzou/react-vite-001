@@ -10,9 +10,9 @@ const UseStateArray = () => {
     setPeople(people.filter((person) => person.id != id));
   };
 
-  const clearAll = () => {
-    setPeople([]);
-  };
+  // const clearAll = () => {
+  //   setPeople([]);
+  // };
 
   return (
     <div>
@@ -26,7 +26,7 @@ const UseStateArray = () => {
           </div>
         );
       })}
-      <button className="btn" type="button" onClick={clearAll}>
+      <button className="btn" type="button" onClick={() => setPeople([])}>
         Clear all
       </button>
     </div>
