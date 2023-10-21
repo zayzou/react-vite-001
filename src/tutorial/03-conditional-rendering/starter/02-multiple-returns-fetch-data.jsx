@@ -1,20 +1,31 @@
 import { useEffect, useState } from "react";
 
-// const url = "https://api.github.com/users/QuincyLarson";
-const url = "https://jsonplaceholder.typicode.com/users/1";
+const url = "https://api.githb.com/users/QuincyLarson";
 
 const MultipleReturnsFetchData = () => {
   const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+
   useEffect(() => {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
         setUser(data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsError(true);
+        setIsLoading(false);
       });
   }, []);
 
-  if (user === null) {
+  if (isLoading) {
     return <h2>Loading ...</h2>;
+  }
+  if (isError) {
+    return <h2>An error occurred 🥺.</h2>;
   }
 
   return (
@@ -22,17 +33,17 @@ const MultipleReturnsFetchData = () => {
       <h4>Fetch Data</h4>
       <section className="">
         <img
-          src="https://www.course-api.com/images/people/person-4.jpeg"
+          src={user.avatar_url}
           alt={user.name}
           className="img"
           style={{ width: "140px", height: "140px", margin: "auto" }}
         />
         <h3>{user.name}</h3>
-        <h4>Works at {user.company.name}</h4>
+        <h4>Works at {user.company}</h4>
         <h5>
-          Find more on <a href={user.website}>{user.website}</a>
+          Find more on <a href={user.blog}>{user.blog}</a>
         </h5>
-        <p>{user.company.catchPhrase}</p>
+        <p>{user.bio}</p>
       </section>
     </div>
   );
