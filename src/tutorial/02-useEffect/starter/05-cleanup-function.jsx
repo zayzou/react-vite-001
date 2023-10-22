@@ -16,14 +16,9 @@ const CleanupFunction = () => {
 
 const SecondComponent = () => {
   useEffect(() => {
-    console.log("hmm, this is interesting");
-    const intId = setInterval(() => {
-      console.log("Call from setInterval");
-    }, 1000);
-    return () => {
-      console.log("Cleanup");
-      clearInterval(intId);
-    };
+    const func = () => {};
+    window.addEventListener("scroll", func);
+    return () => window.removeEventListener("scroll", func);
   }, []);
 
   return <h4>Second Component !</h4>;
