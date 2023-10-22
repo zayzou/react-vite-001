@@ -19,10 +19,10 @@ const UserChallenge = () => {
   return (
     <div>
       <h2>user challenge</h2>
-      <button className="btn" onClick={handleLogin}>
+      <button className="btn" onClick={handleLogin} style={{marginBottom:"14px"}}>
         {isLoggedIn ? "logout" : "login"}
       </button>
-      {isLoggedIn && <UserCard {...user} />}
+      {isLoggedIn ? <UserCard {...user} /> : <Guest />}
     </div>
   );
 };
@@ -36,5 +36,9 @@ const UserCard = ({ name, email, phone }) => {
       </h5>
     </div>
   );
+};
+
+const Guest = () => {
+  return <h5>Login to see magic !</h5>;
 };
 export default UserChallenge;
