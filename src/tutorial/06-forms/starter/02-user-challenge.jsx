@@ -7,12 +7,12 @@ const UserChallenge = () => {
 
   const process = (e) => {
     e.preventDefault();
-    setUsers([...users, { id: users.length + 1, name: name }]);
+    if (!name) {
+      console.error("No name");
+      return
+    }
+    setUsers([...users, { id: users.length + 1,  name }]);
     setName("");
-  };
-
-  const remove = (id) => {
-    setUsers(users.filter((user) => user.id !== id));
   };
 
   return (
@@ -43,7 +43,7 @@ const UserChallenge = () => {
             <button
               type="button"
               className="btn alert-danger"
-              onClick={() => remove(id)}
+              onClick={() => setUsers(users.filter((user) => user.id !== id))}
             >
               X
             </button>
