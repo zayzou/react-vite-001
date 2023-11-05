@@ -3,8 +3,10 @@ import { useEffect, useRef, useState } from "react";
 const UseRefBasics = () => {
   const [value, setValue] = useState(0);
   const refContainer = useRef(null);
+  const isMounted = useRef(false);
 
-  console.log(refContainer);
+  // console.log(refContainer);
+  // console.log(isMounted);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -12,8 +14,18 @@ const UseRefBasics = () => {
   };
 
   useEffect(() => {
-    console.log(refContainer);
+    refContainer.current.focus();
+    console.log("re-render every time ");
   });
+
+  useEffect(() => {
+    if (!isMounted.current) {
+      isMounted.current = true;
+      return;
+    }
+    console.log("re-render");
+  }, [value]);
+
   return (
     <div>
       <form className="form" onSubmit={handleSubmit}>
