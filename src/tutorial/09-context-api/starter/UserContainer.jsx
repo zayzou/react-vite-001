@@ -1,12 +1,18 @@
-
-
-function UserContainer({user,logout}) {
+function UserContainer({ user, logout }) {
   return (
     <div className="user-container">
-        <p>Hello There, {user.name}</p>
-        <button type="button" onClick={logout} className="btn">logout</button>
+      {user ? (
+        <>
+          <p>Hello There, {user.name}</p>
+          <button type="button" onClick={logout} className="btn">
+            logout
+          </button>
+        </>
+      ) : (
+        <p>Please login</p>
+      )}
     </div>
-  )
+  );
 }
 
-export default UserContainer
+export default UserContainer;
