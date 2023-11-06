@@ -6,13 +6,13 @@ function Navbar() {
   const [user, setUser] = useState(defaultUser);
   const logout = () => {
     setUser(null);
-    alert("You have been logged out");
+    console.log("You have been logged out");
   };
   return (
-    <div className="navbar nav-container">
+    <nav className="navbar">
       <h5>Context API</h5>
       <NavLinks user={user} logout={logout} />
-    </div>
+    </nav>
   );
 }
 

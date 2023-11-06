@@ -3,7 +3,7 @@ function UserContainer({ user, logout }) {
     <div className="user-container">
       {user ? (
         <>
-          <p>Hello There, {user.name}</p>
+          <p>Hello There, {user?.name?.toUpperCase()}</p>
           <button type="button" onClick={logout} className="btn">
             logout
           </button>
