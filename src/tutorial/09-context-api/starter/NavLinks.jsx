@@ -1,7 +1,6 @@
 import UserContainer from "./UserContainer";
 
-function NavLinks({ user, logout }) {
-  console.log(user, logout);
+function NavLinks() {
 
   return (
     <div className="nav-container">
@@ -16,7 +15,7 @@ function NavLinks({ user, logout }) {
           <a href="">Contact</a>
         </li>
       </ul>
-      <UserContainer user={user} logout={logout} />
+      <UserContainer />
     </div>
   );
 }

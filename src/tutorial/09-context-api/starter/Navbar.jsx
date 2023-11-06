@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, createContext } from "react";
 import NavLinks from "./NavLinks";
+
+export const NavbarContext = createContext();
 
 function Navbar() {
   const defaultUser = { name: "John Doe" };
@@ -9,10 +11,12 @@ function Navbar() {
     console.log("You have been logged out");
   };
   return (
-    <nav className="navbar">
-      <h5>Context API</h5>
-      <NavLinks user={user} logout={logout} />
-    </nav>
+    <NavbarContext.Provider value={{ user, logout }}>
+      <nav className="navbar">
+        <h5>Context API</h5>
+        <NavLinks />
+      </nav>
+    </NavbarContext.Provider>
   );
 }
 
