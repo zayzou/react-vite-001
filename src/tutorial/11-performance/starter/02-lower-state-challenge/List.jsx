@@ -2,7 +2,7 @@ import Person from './Person';
 
 const List = ({ people }) => {
   return (
-    <div>
+    <div className='form'>
       {people.map((person) => {
         return <Person key={person.id} {...person} />;
       })}
