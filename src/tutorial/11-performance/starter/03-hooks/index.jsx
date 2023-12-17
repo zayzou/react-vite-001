@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { data } from '../../../../data';
 import List from './List';
-const LowerState = () => {
+const Memo = () => {
   const [people, setPeople] = useState(data);
   const [count, setCount] = useState(0);
 
@@ -18,4 +18,4 @@ const LowerState = () => {
     </section>
   );
 };
-export default LowerState;
+export default Memo;
